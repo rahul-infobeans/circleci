@@ -11,5 +11,5 @@ yarn wp-cypress start
 #tail -100 ./node_modules/@bigbite/wp-cypress/debug.log
 
 echo "Running WP-Cypress"
-# yarn cypress run
-./node_modules/cypress/bin/cypress run
+yarn cypress run
+# ./node_modules/cypress/bin/cypress run
