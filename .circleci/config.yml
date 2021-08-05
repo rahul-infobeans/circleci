@@ -1,103 +1,38 @@
-# PHP CircleCI 2.0 configuration file
-#
-# Check https://circleci.com/docs/2.0/language-php/ for more details
-#
 version: 2.1
-orbs:
-  cypress: cypress-io/cypress@1
-jobs:
-  deploy-job:
+workflows:
+  lint-and-test:
+    jobs:      
+      - tests
+
+
+jobs:  
+  tests:
     docker:
-      # Specify the version you desire here
-      - image: circleci/php:7.3-node-browsers
-    steps:
-      - add_ssh_keys:
-          fingerprints:
-            - "SHA256:pbtvZo+nIZegrkmhnZfFt+weRprYLu36z4zq7Ze66bE yash.chopra@infobeans.com"
-  test:
-    
-    docker:
-      # Specify the version you desire here
-      - image: circleci/php:7.3-node-browsers
-
-      # Specify service dependencies here if necessary
-      # CircleCI maintains a library of pre-built images
-      # documented at https://circleci.com/docs/2.0/circleci-images/
-      # Using the RAM variation mitigates I/O contention
-      # for database intensive operations.
-      # - image: circleci/mysql:5.7-ram
-      #
-      # - image: redis:2.8.19
-
-    steps:
-      #- add_ssh_keys:
-      # fingerprints:
-      #    - "SHA256:pbtvZo+nIZegrkmhnZfFt+weRprYLu36z4zq7Ze66bE yash.chopra@infobeans.com"
-      - checkout
-
-      - run: sudo apt update # PHP CircleCI 2.0 Configuration File# PHP CircleCI 2.0 Configuration File sudo apt install zlib1g-dev libsqlite3-dev
-      - run: sudo docker-php-ext-install zip
-
-      # Download and cache dependencies
-      - restore_cache:
-          keys:
-            # "composer.lock" can be used if it is committed to the repo
-            - v1-dependencies-{{ checksum "composer.json" }}
-            # fallback to using the latest cache if no exact match is found
-            - v1-dependencies-
-
-      - run: composer install -n --prefer-dist
-
-      - save_cache:
-          key: v1-dependencies-{{ checksum "composer.json" }}
-          paths:
-            - ./vendor
-      #- restore_cache:
-      #    keys:
-      #      - node-v1-{{ checksum "package.json" }}
-      #      - node-v1-
-      - run: yarn install
-  build:
-    #working_directory: ~/circleci-php
-    docker:
-      # Specify the version you desire here
       - image: circleci/php:7.3-node-browsers
       
-    steps:  
-      - checkout
-      - run: pwd
-      - run : ls
+    steps:
+      - checkout      
+      - restore_cache:
+          name: Restore node modules cache
+          key: node_modules-{{ checksum "package.json" }}
       - run:
-          name: "Test the build"
-          command: |
-            if [[ $CIRCLE_BRANCH == 'master' || $CIRCLE_BRANCH == 'preprod' || $CIRCLE_BRANCH == 'develop' || $CIRCLE_BRANCH == 'qa' ]]
-            then
-              echo 'Fetching from default branch'
-              ./private/bin/create_build.sh
-            else
-              echo 'Fetching from other branches'
-              ./private/bin/run_pr_checks.sh
-            fi  
+          name: Install dependencies
+          command: npm install
+      - save_cache:
+            name: Save dependancies cache
+            key: cache-{{ checksum "package.json" }}
+            paths:
+              - ~/.npm
+              - ~/.cache
+              - ~/.composer/cache
+      
       - run:
-          name: "What branch am I on now?"
-          command: echo $CIRCLE_BRANCH
-               
-      #- run: ./private/bin/create_build.sh
-          
-           
-
-
-     
-      #- save_cache:
-      #    key: node-v1-{{ checksum "package.json" }}
-      #    paths:
-      #      - node_modules
-
-      # prepare the database
-      #- run: touch storage/testing.sqlite
-      #- run: php artisan migrate --env=testing --database=sqlite_testing --force
-
-      # run tests with phpunit or codecept
-      #- run: ./vendor/bin/phpunit
-      #- run: ./vendor/bin/codecept build
-      #- run: ./vendor/bin/codecept run
+          name: Start wp-cypress
+          command: ./private/bin/run_pr_checks.sh    
+      #- run:
+      #    name: Run Cypress tests
+      #    command: ./node_modules/cypress/bin/cypress run
+      #- store_artifacts:
+      #    path: tests/functional/cypress/screenshots
+      #- store_test_results:
+      #    path: cypress/reports
