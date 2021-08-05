@@ -1,6 +1,6 @@
 #!/bin/bash
 
-. ./private/bin/build_changes.sh
+./private/bin/build_changes.sh
 
 echo "Installing cypress"
 yarn cypress install
@@ -8,7 +8,7 @@ yarn cypress install
 echo "Starting WP-Cypress"
 yarn wp-cypress start
 
-tail -100 ./node_modules/@bigbite/wp-cypress/debug.log
+#tail -100 ./node_modules/@bigbite/wp-cypress/debug.log
 
 echo "Running WP-Cypress"
-$(yarn bin)/cypress run
+yarn cypress run
