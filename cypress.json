@@ -3,6 +3,7 @@
   "videoUploadOnPasses": false,
   "retries": 1,
   "wp": {
+    "port": 3000,
     "version": ["5.6"],
     "wpContent": {
       "path": "./",
