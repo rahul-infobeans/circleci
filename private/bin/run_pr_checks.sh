@@ -16,7 +16,7 @@ yarn start
 
 ## poll the server over and over again
 ## until it's been booted
-yarn wait-on http://localhost:8080
+#yarn wait-on http://localhost:8080
 
 echo "Running WP-Cypress"
 yarn cypress run --browser chrome
