@@ -5,7 +5,7 @@
 #npm start
 
 echo "Installing cypress"
-#yarn cypress install
+yarn cypress install
 
 echo "Starting WP-Cypress"
 npx wp-cypress start
