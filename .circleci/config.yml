@@ -26,24 +26,24 @@ jobs:
               - ~/.cache
               - ~/.composer/cache
       
-      #- run:
-      #    name: Start wp-cypress
-      #    command: ./private/bin/run_pr_checks.sh
       - run:
-          name: install wp-cypress
-          command: yarn cypress install
-      - run:
-          name: Starting wp-cypress
-          command: yarn wp-cypress start
-      - run: 
-          name: install wait on load
-          command: npm install wait-on      
-      - run:
-          name: Running wp-cypress
-          command: yarn cypress run --browser chrome
-      - run: 
-          name: wait for localhost to load
-          command: 'yarn wait-on http://localhost'    
+         name: Start wp-cypress
+         command: ./private/bin/run_pr_checks.sh
+      # - run:
+      #     name: install wp-cypress
+      #     command: yarn cypress install
+      # - run:
+      #     name: Starting wp-cypress
+      #     command: yarn wp-cypress start
+      # - run: 
+      #     name: install wait on load
+      #     command: npm install wait-on      
+      # - run:
+      #     name: Running wp-cypress
+      #     command: yarn cypress run --browser chrome
+      # - run: 
+      #     name: wait for localhost to load
+      #     command: 'yarn wait-on http://localhost'    
 
       #- run:
       #    name: Run Cypress tests
