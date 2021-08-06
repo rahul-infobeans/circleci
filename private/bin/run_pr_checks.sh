@@ -19,5 +19,5 @@ yarn start
 #yarn wait-on http://localhost:8080
 
 echo "Running WP-Cypress"
-yarn cypress run --browser chrome
+sudo yarn cypress run --browser chrome
 # ./node_modules/cypress/bin/cypress run
