@@ -14,13 +14,13 @@ jobs:
       - checkout      
       - restore_cache:
           name: Restore node modules cache
-          key: node_modules-{{ checksum "package.json" }}
+          key: node_modules-v2-{{ checksum "package.json" }}
       - run:
           name: Install dependencies
           command: npm install
       - save_cache:
             name: Save dependancies cache
-            key: cache-{{ checksum "package.json" }}
+            key: cache-v2-{{ checksum "package.json" }}
             paths:
               - ~/.npm
               - ~/.cache
