@@ -22,6 +22,6 @@ npm install --save-dev start-server-and-test
 
 
 echo "Running WP-Cypress"
-#sudo yarn cypress run --browser chrome
-sudo ./node_modules/cypress/bin/cypress run
+yarn cypress run
+#./node_modules/cypress/bin/cypress run
 
