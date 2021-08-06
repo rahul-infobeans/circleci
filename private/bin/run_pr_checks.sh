@@ -12,11 +12,11 @@ yarn wp-cypress start
 ## background your server
 
 npm install wait-on 
-yarn start
+#yarn start
 
 ## poll the server over and over again
 ## until it's been booted
-#yarn wait-on http://localhost:8080
+yarn wait-on http://localhost:8080
 
 echo "Running WP-Cypress"
 sudo yarn cypress run --browser chrome
