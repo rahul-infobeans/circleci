@@ -2,6 +2,8 @@
 
 ./private/bin/build_changes.sh
 
+npm start
+
 echo "Installing cypress"
 yarn cypress install
 
@@ -12,7 +14,6 @@ yarn wp-cypress start
 ## background your server
 
 #npm install wait-on 
-npm start
 
 ## poll the server over and over again
 ## until it's been booted
