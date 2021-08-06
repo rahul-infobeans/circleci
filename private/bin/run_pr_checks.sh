@@ -5,10 +5,10 @@
 #npm start
 
 echo "Installing cypress"
-yarn cypress install
+#yarn cypress install
 
 echo "Starting WP-Cypress"
-yarn wp-cypress start
+npx wp-cypress start
 
 #tail -100 ./node_modules/@bigbite/wp-cypress/debug.log
 ## background your server
@@ -20,5 +20,6 @@ yarn wp-cypress start
 #yarn wait-on http-get://localhost
 
 echo "Running WP-Cypress"
-sudo yarn cypress run --browser chrome
-# ./node_modules/cypress/bin/cypress run
+#sudo yarn cypress run --browser chrome
+./node_modules/cypress/bin/cypress run
+
