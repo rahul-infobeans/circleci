@@ -14,7 +14,7 @@
       "vip": true
     },
     "config": {
-      "CYPRESS_BASE_URL" : "https://docker.xom",
+      "CYPRESS_BASE_URL" : "https://dockers.xom",
       "WP_DEBUG": false,
       "IDG_ASSET_MANAGER_LOCAL": true,
       "PUBLISHING_FLOW_EXPECTED_SOURCE_URL": "localhost",
