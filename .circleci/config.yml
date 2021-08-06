@@ -29,13 +29,13 @@ jobs:
       #- run:
       #    name: Start wp-cypress
       #    command: ./private/bin/run_pr_checks.sh
-     - run:
+      - run:
           name: install wp-cypress
           command: yarn cypress install
-     - run:
+      - run:
           name: Starting wp-cypress
           command: yarn wp-cypress start  
-     - run:
+      - run:
           name: Running wp-cypress
           command: yarn cypress run                 
       #- run:
