@@ -2,7 +2,7 @@
 
 ./private/bin/build_changes.sh
 
-npm start
+#npm start
 
 echo "Installing cypress"
 yarn cypress install
