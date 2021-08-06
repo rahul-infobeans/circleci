@@ -40,7 +40,7 @@ jobs:
           command: npm install wait-on
       - run: 
           name: wait for localhost to load
-          command: 'yarn wait-on http://localhost:4200'
+          command: 'yarn wait-on http://localhost'
       - run:
           name: Running wp-cypress
           command: yarn cypress run  
