@@ -26,9 +26,18 @@ jobs:
               - ~/.cache
               - ~/.composer/cache
       
-      - run:
-          name: Start wp-cypress
-          command: ./private/bin/run_pr_checks.sh    
+      #- run:
+      #    name: Start wp-cypress
+      #    command: ./private/bin/run_pr_checks.sh
+     - run:
+          name: install wp-cypress
+          command: yarn cypress install
+     - run:
+          name: Starting wp-cypress
+          command: yarn wp-cypress start  
+     - run:
+          name: Running wp-cypress
+          command: yarn cypress run                 
       #- run:
       #    name: Run Cypress tests
       #    command: ./node_modules/cypress/bin/cypress run
