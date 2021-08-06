@@ -3,7 +3,7 @@
 ./private/bin/build_changes.sh
 
 #npm start
-
+npm install --save-dev start-server-and-test
 echo "Installing cypress"
 yarn cypress install
 
@@ -18,7 +18,7 @@ npx wp-cypress start
 ## poll the server over and over again
 ## until it's been booted
 #yarn wait-on http-get://localhost
-npm install --save-dev start-server-and-test
+
 
 
 echo "Running WP-Cypress"
