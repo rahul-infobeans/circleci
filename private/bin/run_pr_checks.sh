@@ -10,7 +10,7 @@ yarn wp-cypress start
 
 #tail -100 ./node_modules/@bigbite/wp-cypress/debug.log
 ## background your server
-yarn start &
+yarn start
 
 ## poll the server over and over again
 ## until it's been booted
