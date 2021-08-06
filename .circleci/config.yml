@@ -34,7 +34,10 @@ jobs:
           command: yarn cypress install
       - run:
           name: Starting wp-cypress
-          command: yarn wp-cypress start  
+          command: yarn wp-cypress start
+      - run: 
+          name: install wait on
+          command: npm install wait-on
       - run: 
           name: wait for localhost to load
           command: 'yarn wait-on http://localhost:4200'
