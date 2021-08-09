@@ -22,8 +22,8 @@ yarn wp-cypress start
 
 
 echo "Running WP-Cypress"
-yarn cypress run --browser chrome
+#yarn cypress run --browser chrome
 #DEBUG=cypress:* ./node_modules/.bin/cypress open
-#DEBUG=cypress:* ./node_modules/cypress/bin/cypress run
+DEBUG=cypress:* ./node_modules/cypress/bin/cypress run
 #./node_modules/cypress/bin/cypress run
 
