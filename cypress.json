@@ -2,6 +2,7 @@
   "pageLoadTimeout": 30000,
   "videoUploadOnPasses": false,
   "retries": 1,
+  "port": 46469
   "wp": {    
     "version": ["5.6"],
     "wpContent": {
@@ -14,7 +15,7 @@
     "config": {      
       "WP_DEBUG": false,
       "IDG_ASSET_MANAGER_LOCAL": true,
-      "PUBLISHING_FLOW_EXPECTED_SOURCE_URL": "localhost",
+      "PUBLISHING_FLOW_EXPECTED_SOURCE_URL": "",
       "VIP_GO_APP_ENVIRONMENT": "cypress"
     },
     "configFile": "./vip-config/vip-config.php"
