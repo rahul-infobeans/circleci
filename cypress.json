@@ -3,7 +3,7 @@
   "videoUploadOnPasses": false,
   "retries": 1,
   "port": 80,
-  "chromeWebSecurity": false
+  "chromeWebSecurity": false,
   "wp": {    
     "version": ["5.6"],
     "wpContent": {
