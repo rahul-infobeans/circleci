@@ -18,7 +18,7 @@ jobs:
           key: node_modules-v2-{{ checksum "package.json" }}
       - run:
           name: Install dependencies
-          command: npm install
+          command: npm ci
       - save_cache:
             name: Save dependancies cache
             key: cache-v2-{{ checksum "package.json" }}
