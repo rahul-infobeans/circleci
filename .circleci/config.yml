@@ -10,6 +10,7 @@ jobs:
     docker:
       - image: circleci/php:7.3-node-browsers
       - image: cypress/base:8
+      - image: cypress/browsers:chrome67
       
     steps:
       - checkout      
