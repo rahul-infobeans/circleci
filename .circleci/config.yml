@@ -1,61 +1,24 @@
-version: 2.1
-workflows:
-  lint-and-test:
-    jobs:      
-      - tests
-
-
-jobs:  
-  tests:
+version: 2
+jobs:
+  build:
     docker:
-      - image: circleci/php:7.3-node-browsers
       - image: cypress/base:14.16.0
         environment:
           ## this enables colors in the output
           TERM: xterm
-      
+    working_directory: ~/app
     steps:
-      - checkout      
+      - checkout
       - restore_cache:
-          name: Restore node modules cache
-          key: node_modules-v2-{{ checksum "package.json" }}
+          keys:
+            - v1-deps-{{ .Branch }}-{{ checksum "package.json" }}
+            - v1-deps-{{ .Branch }}
+            - v1-deps
       - run:
-          name: Install dependencies
-          command: npm install    
-      - run:
-          name: Install dependencies
-          command: npm ci
+          name: Install Dependencies
+          command: yarn install --frozen-lockfile
       - save_cache:
-            name: Save dependancies cache
-            key: cache-v2-{{ checksum "package.json" }}
-            paths:
-              - ~/.npm
-              - ~/.cache
-              - ~/.composer/cache
-      
-      - run:
-         name: Start wp-cypress
-         command: ./private/bin/run_pr_checks.sh
-      # - run:
-      #     name: install wp-cypress
-      #     command: yarn cypress install
-      # - run:
-      #     name: Starting wp-cypress
-      #     command: yarn wp-cypress start
-      # - run: 
-      #     name: install wait on load
-      #     command: npm install wait-on      
-      # - run:
-      #     name: Running wp-cypress
-      #     command: yarn cypress run --browser chrome
-      # - run: 
-      #     name: wait for localhost to load
-      #     command: 'yarn wait-on http://localhost'    
-
-      #- run:
-      #    name: Run Cypress tests
-      #    command: ./node_modules/cypress/bin/cypress run
-      #- store_artifacts:
-      #    path: tests/functional/cypress/screenshots
-      #- store_test_results:
-      #    path: cypress/reports
+          key: v1-deps-{{ .Branch }}-{{ checksum "package.json" }}
+          paths:
+            - ~/.cache ## cache both yarn and Cypress!
+      - run: $(yarn bin)/cypress run --record --key <record_key>
