@@ -8,7 +8,7 @@ workflows:
 jobs:  
   tests:
     docker:
-      - image: circleci/php:7.3-node-browsers
+      - image: cypress/base:8
       
     steps:
       - checkout      
