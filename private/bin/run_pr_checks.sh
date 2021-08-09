@@ -8,7 +8,7 @@ echo "Installing cypress"
 yarn cypress install
 
 echo "Starting WP-Cypress"
-npx wp-cypress start
+yarn wp-cypress start
 
 #tail -100 ./node_modules/@bigbite/wp-cypress/debug.log
 ## background your server
@@ -22,6 +22,6 @@ npx wp-cypress start
 
 
 echo "Running WP-Cypress"
-yarn cypress run
+DEBUG=cypress:* ./node_modules/.bin/cypress open
 #./node_modules/cypress/bin/cypress run
 
