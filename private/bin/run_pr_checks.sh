@@ -5,10 +5,10 @@
 #npm start
 npm install --save-dev start-server-and-test
 echo "Installing cypress"
-yarn cypress install
+DEBUG=cypress:*  yarn cypress install
 
 echo "Starting WP-Cypress"
-yarn wp-cypress start
+DEBUG=cypress:*  yarn wp-cypress start
 
 #tail -100 ./node_modules/@bigbite/wp-cypress/debug.log
 ## background your server
