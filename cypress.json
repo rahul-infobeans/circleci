@@ -2,7 +2,7 @@
   "pageLoadTimeout": 30000,
   "videoUploadOnPasses": false,
   "retries": 1,
-  "port": 80,
+  "port": 8080,
   "chromeWebSecurity": false,
   "wp": {    
     "version": ["5.6"],
