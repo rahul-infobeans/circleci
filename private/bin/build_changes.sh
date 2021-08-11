@@ -90,4 +90,4 @@ echo "travis build dir = $TRAVIS_BUILD_DIR";
 
 echo "Yarn: Building Production Assets"
 
-yarn build:prod --all-projects
+yarn build:prod --all

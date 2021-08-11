@@ -1,5 +1,5 @@
 {
-  "pageLoadTimeout": 30000,
+  "pageLoadTimeout": 3000000,
   "videoUploadOnPasses": false,
   "retries": 1,
   "port": 80,
