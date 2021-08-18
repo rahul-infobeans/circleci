@@ -5,7 +5,7 @@
 #npm start
 npm install --save-dev start-server-and-test
 echo "Installing cypress"
-yarn cypress install
+yarn cypress install --force
 
 echo "Starting WP-Cypress"
 yarn wp-cypress start
