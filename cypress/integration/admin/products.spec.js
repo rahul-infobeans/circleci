@@ -12,7 +12,7 @@ describe('Products.', () => {
     const productTitle = 'iPhone 12';
 
     cy.visitAdmin();
-    cy.get(ADD_NEW_PRODUCT_SELECTOR).click({ force: true });
+    cy.get(ADD_NEW_PRODUCT_SELECTOR).wait(50000).click({ force: true });
     cy.get('#post-title-0').type('iPhone 12');
     cy.get('.components-button.edit-post-sidebar__panel-tab').contains('Product').click();
 
